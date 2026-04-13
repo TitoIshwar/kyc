@@ -847,7 +847,9 @@ input[type="number"].form-control::-webkit-inner-spin-button { opacity: .5; }
 <script src="https://files.bpcontent.cloud/2026/01/12/05/20260112052956-2SB2K6AU.js" defer></script>
 
 <script>
-const API = 'http://localhost:3000/api';
+const API = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/api'
+  : '/api';
 let currentClient = null;
 let chartDash = null, chartAnalytics = null;
 
