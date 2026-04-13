@@ -20,11 +20,12 @@ let db;
 
 function connectToMySQL() {
     db = mysql.createConnection({
-        host:     '127.0.0.1',
-        port:      3307,
-        user:     'root',
-        password: 'tito2212',
-        database: 'kyc_system'
+        host:     process.env.DB_HOST     || '127.0.0.1',
+        port:     process.env.DB_PORT     || 3307,
+        user:     process.env.DB_USER     || 'root',
+        password: process.env.DB_PASSWORD || 'tito2212',
+        database: process.env.DB_NAME     || 'kyc_system',
+        ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined
     });
 
     db.connect(err => {
